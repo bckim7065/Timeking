@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http#{//mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <!--
+ - [서비스신청목록 Mapper XML]
+ -   
+ - 관리책임 : 김병철
+ - 변경이력 (작성일자 / 작성자 / 요청자 / 내용) :
+ -     1. 2020-03-16 / 김병철 / - / 최초작성 
+ -->
+ <mapper namespace="com.timeking.repository.admin.AdminMp">
+    <!--
+     - [서비스신청목록 목록] 
+     -->
+    <select id="getSvcReqList" resultType="Map">
+	    <![CDATA[
+			Set @sortNoStart := #{SortNoStart}, @sortNoLength := #{SortNoLength}, @RN := 0;
+			Select
+				x.*,
+				ConCat('(', x.R_ADRS_ZIP, ')', ' ', x.R_ADRS) R_FULL_ADRS,
+				(	
+			    	Select
+			    		Count(*)
+			    	From
+				    	(
+							Select
+								n.*
+							From
+								(
+									Select
+										a.*
+									From 
+										THPTK_SERVICE_REQ a
+					            ) n
+				            Where 1 = 1
+				            And ConCat_WS('^', n.R_CPN_NM, n.R_BIZ_NO) Like ConCat('%', #{CondText}, '%')
+				    	) m
+			    ) TOT_CN,
+			    (	
+			    	Select
+			    		Count(*)
+			    	From
+				    	(
+							Select
+								n.*
+							From
+								(
+									Select
+										a.*
+									From 
+										THPTK_SERVICE_REQ a
+					            ) n
+				            Where 1 = 1
+				            And ConCat_WS('^', n.R_CPN_NM, n.R_BIZ_NO) Like ConCat('%', #{CondText}, '%')
+				    	) m
+			    ) FILTERED_CN
+			From
+				(
+					Select
+						a.*,
+						@RN := @RN + 1 ROW_NUM
+					From 
+						THPTK_SERVICE_REQ a
+					Where 1 = 1
+					Order By
+						a.R_DTTM Desc
+				) x
+			Where 1 = 1
+			And x.ROW_NUM Between @sortNoStart + 1 And @sortNoStart + @sortNoLength
+			And ConCat_WS('^', x.R_CPN_NM, x.R_BIZ_NO) Like ConCat('%', #{CondText}, '%');
+		]]>		
+    </select>
+</mapper>
