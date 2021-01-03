@@ -2,6 +2,8 @@
   * [fade_in Effect]
   *
   * 관리책임 : 김병철
+  * 기능설명 : 
+  * 	1. 클래스명 -> fade-in 지정, fade_in_delay = 딜레이값 지정 후 사용
   * 변경이력 (작성일자 / 작성자 / 요청자 / 내용) : 
   *     1. 2020-04-26 / 김병철 / - / 최초작성
   */	
@@ -51,12 +53,10 @@ function fadeInInit() {
 	    if(!timer) {
 	        timer = setTimeout(function() {
 	            timer = null;
-		triggerFadeIn();
+            	triggerFadeIn();
 	        }, 100);
 	    }	
 	});
-	
-	//$(window).scroll(triggerFadeIn);
 }
 
 function triggerFadeIn() {

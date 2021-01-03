@@ -95,7 +95,6 @@
 		</dependency>
 		<!-- [@ConfigurationProperties 사용시 권장사용 관련 End] -->
 		
-		
 		<dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -134,5 +133,4 @@
             </resource>
         </resources>
 	</build>
-
 </project>

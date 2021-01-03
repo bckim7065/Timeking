@@ -41,27 +41,9 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.9.1.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/common.js?contextPath=${pageContext.request.contextPath}"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/fade-in.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/timeking.js"></script>
 
     <script type="text/javascript">
-        $(document).ready(function() {  
-            $("a").on('click', function(e) {
-                if (this.hash !== "") {
-                    e.preventDefault();
-
-                    var hash = this.hash;
-
-                    $('html, body').animate({
-                        scrollTop: $(hash).offset().top
-                    }, 800, function() {
-                        window.location.hash = hash;
-                    });
-                }
-            });
-	
-            $("#h_bar").on("click", function(e) {
-                $("#nav_hmenu").toggleClass("on");
-            });
-        });
     </script>
 </head>
 <body>
@@ -487,7 +469,8 @@
         
         <!--Bottom Menu Start-->
 		<tfCommon:bottom/> 
-		<!--Bottom Menu Start-->
+		<!--Bottom Menu Start-->	
     </div>
+	<div id="top_control" title="Scroll Back to Top" style="position: fixed; bottom: 5px; right: 5px; opacity: 1; cursor: pointer;"></div>
 </body>
 </html>

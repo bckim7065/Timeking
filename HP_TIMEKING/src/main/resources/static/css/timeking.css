@@ -5,7 +5,19 @@ html, body {width: 100%; height: 100%;}
 #wrap {width: 100%; height: 100%;}
 
 /* [header Start] */
-#header {background:  #ffffff; width: 100%; height: 80px;}
+#header {
+	position:fixed;
+	top: 0;
+	left: 0;
+	z-index: 1; 
+	background:  #ffffff; 
+	width: 100%; 
+	height: 80px; 
+	transition: transform 0.3s cubic-bezier(.22, .61, .36, 1);
+	border-bottom: 2px solid #f2f2f2;
+	box-shadow: 0 2px 15px 0 rgba(0,0,0,0.1);
+	
+}
 #header .container .nav_logo {float: left; width: 200px; height: 100%;}
 #header .container .nav_logo a {
     position: relative; 
@@ -21,8 +33,6 @@ html, body {width: 100%; height: 100%;}
     bottom: 0;
     margin: auto;
 }
-
-#header {position: relative;}
 #header .container .nav_menu {float: left; width: 968px; height: 100%;}
 #header .container .nav_menu .gnb_menu {height: 100%; text-align: right; float: right; padding-top: 33px;}
 #header .container .nav_menu .gnb_menu::after {content: ""; display: table; clear: both;}
@@ -86,7 +96,10 @@ html, body {width: 100%; height: 100%;}
 /* [햄버거 메뉴 End] */
 
 /* [컨텐츠 영역 Start] */
-#contents {position: relative;}
+#contents {
+	position: relative;
+	margin-top: 80px;
+}
 
 /* [인트로 Start] */
 #intro_appstore {
@@ -886,8 +899,12 @@ input:-webkit-autofill:active {
 /* [컨텐츠 영역 End] */
 
 /* [푸터 Start] */
-#footer {color: #ffffff; background: #262831; width: 100%; height: 100px;}
-#footer_nav {font-size: 17px; padding-top: 20px}
+#footer {color: #ffffff; background: #262831; width: 100%; height: auto;}
+#footer_nav {
+	font-size: 17px; 
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
 #footer_nav .terms {width: 100%;}
 #footer_nav .terms a {color: #ffffff}
 #footer_nav .copyright {
@@ -907,6 +924,7 @@ input:-webkit-autofill:active {
     width: 1170px; 
     height: 100%; 
     margin: 0 auto;
+    padding: 0;
 }
 .container::after {
     content: "";
@@ -1142,6 +1160,11 @@ input:-webkit-autofill:active {
     width: 100%; 
     height: 100%;
 }
+#admin_wrap .container{
+    padding-left: 30px;
+    padding-right: 30px;
+    box-sizing: border-box;
+}
 .admin_container {
     position: absolute;
     top: 50%;
@@ -1155,6 +1178,7 @@ input:-webkit-autofill:active {
     width: 100%;
     height: 80px;
     background: #0276fa;
+    box-sizing: border-box;
 }
 .admin_header .logo {
     float: left;
@@ -1173,10 +1197,9 @@ input:-webkit-autofill:active {
 .admin_contents {
     width: 100%;
     min-height: 850px;
-    box-sizing: border-box;
-    padding: 30px 30px;
 }
 .admin_contents h2 {
+	margin-top: 30px;
     font-size: 30px;
 }
 .admin_contents h2::after {
@@ -1328,6 +1351,29 @@ input:-webkit-autofill:active {
 	background-color: #fff;
 }
 /* [서비스신청내역 End] */
+#top_control {
+	display: none;
+	position: fixed; 
+	bottom: 5px; 
+	right: 5px; 
+	opacity: 1; 
+	cursor: pointer;
+	color: #fff;
+	z-index: 10;
+	width: 30px;
+	height: 30px;
+	font-size: 20px;
+	background: #222;
+	broder-radius: 3px;
+}
+#top_control::after {
+	top: -2px;
+	left: 8.5px;
+	content: "\f106";
+	position: absolute;
+	text-align: center;
+	font-family: FontAwesome;
+}
 /* [레이아웃 End] */
 
 /* [animation Start] */
@@ -1401,6 +1447,7 @@ input:-webkit-autofill:active {
     .container {width: 750px;}
     #intro_appstore .intro_contents h1 {font-size: 35px;}
     #intro_appstore .intro_contents h2 {font-size: 20px;} 
+    #contents {margin-top: 80px}
     #header .container .nav_menu {width: 540px;}
     #header .container .nav_menu .gnb_menu li {padding: 0 10px;}
     #nav_hmenu {display: none}
@@ -1412,13 +1459,14 @@ input:-webkit-autofill:active {
 
 @media (max-width: 770px) {
     .container {width: 100%;}
+    #header {position: relative !important;}
     #header .container .nav_logo {margin-left: 25px; -webkit-tap-highlight-color: transparent;}
     #header .container .nav_menu {display: none}
     #header .container #h_bar {display: block;}
     #header .container #h_bar .h_bar {font-size: 40px; color:#467cf8}
+	#contents {margin-top: 0}
     #nav_hmenu {display: block}
     .func_info1_img {width: 600px; height: auto;}
-    .admin_menu {padding-right: 30px;}
     .popup-body table {width: 100%;}
     #intro_function {height: 500px}
 }
@@ -1505,6 +1553,8 @@ input:-webkit-autofill:active {
 	.price_custom ul {font-size: 15px;}
 	#intro_appstore .intro_contents h1 {font-size: 34px}
 	#login_wrap {background-position: 30%;}
+	.admin_header {height: 100px;}
+	.admin_header .logo {width: 190px;}
 }
 
 @media (max-width: 375px) {
@@ -1542,6 +1592,7 @@ input:-webkit-autofill:active {
 	.sucess_contents p {font-size: 14px;}
 	.sucess_contents h2 span {font-size: 22px !important;}
 	#intro_appstore .intro_contents h2 {font-size: 16px}
+	.login_bar {padding-top: 15px;}
 }
 
 
@@ -1566,6 +1617,7 @@ input:-webkit-autofill:active {
 	.func_info_title6 p {font-size: 15px;}
 	.price_func {font-size: 13px;}
 	.price_custom ul {font-size: 13px;}
+	.admin_header .logo {width: 150px;}
 }
 
 @media (max-width: 270px) {
@@ -1580,6 +1632,7 @@ input:-webkit-autofill:active {
 	#intro_appstore .intro_contents h2 {font-size: 13px}
 	.area_ban {margin-top: 30px}
 	#intro_function .intro_contents h2 {font-size: 12px}
+	.admin_header .logo {width: 120px;}
 	
 	
 }

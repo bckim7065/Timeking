@@ -17,6 +17,7 @@
     
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/img/Favicon/favicon.ico"/>
     
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="Pragma" content="no-cache">
@@ -25,7 +26,7 @@
     
     <meta name="description" content="서비스신청내역">    
     <meta name="author" content="타임킹">
-      <meta name="robots" content="noindex,nofollow">
+    <meta name="robots" content="noindex,nofollow">
     <meta name="keywords" content="스마트근태관리,근태관리,시간관리,타임킹,근태어플,근태앱,52시간제,주요기능">
         
     <meta property="og:title" content="서비스신청내역">   
@@ -35,6 +36,7 @@
     
     
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/js/Datatables/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/js/Datatables/css/dataTables.responsive.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/custom-sky-forms.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/blue.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/font-awesome.min.css">
@@ -53,14 +55,18 @@
 			// [메인 Start]
 			// 연결 어플리케이션 목록 테이블 정의
 			var dtSvcReqLst = $("#svcReqTable").DataTable({						 				
-				processing: true,
+				processing: false,
 		        serverSide: true,		        
 		        ajax: {
 		        	type: "post",
 		        	url: "<c:url value='/admin/getSvcReqList'/>",
 		        	data: function(d) {		   		        		
 		        		d.condText = $("#cond_Text").val();		        		
-		        	}						
+		        	},
+		        	error: function (xhr, error, code)
+		            {
+		                alert("데이터를 로드중 에러가 발생하였습니다.")
+		            }
 		        },
 		        columns: [									 							
 		        	{data: "R_DTTM", class: "textAlign_center"},							
@@ -73,12 +79,12 @@
 					{data: "R_EMAIL"},	
 					{data: "R_USER_CNT", class: "textAlign_center"},
 					{data: "R_RMK", class: "txtRmk"}
-				],					 							
+				],				
 		        pagingType: "simple_numbers",
 		        pageLength: 10,
 		        info: false,			        
 		        ordering: false,
-		        searching: false 
+		        searching: false
 			});
 			
 			// 조회조건 검증			
@@ -123,7 +129,6 @@
         <div class="admin_contents">
         	<div class="container">
 	            <h2>서비스 신청내역</h2>
-				
 				<div class="area_search mb30">
 					<form class="sky-form form-cond" style="border:none; padding:25px;">																
 						<div class="divSearch">		
