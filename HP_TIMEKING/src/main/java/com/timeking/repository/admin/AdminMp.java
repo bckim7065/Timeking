@@ -22,4 +22,6 @@ public interface AdminMp {
 	 * @return 서비스신청 목록
 	 */
 	List<Map<String, Object>> getSvcReqList(String CondText, int SortNoStart, int SortNoLength);
+	Integer deleteReq(int RS_SEQ);
+	Integer updateReq(Map<String, Object> params);
 }

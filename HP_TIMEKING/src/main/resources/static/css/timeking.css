@@ -1029,7 +1029,7 @@ input:-webkit-autofill:active {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 350px;
-    height: 400px;
+    height: 460px;
     border-radius: 2px;
 }
 .login_container::before {
@@ -1069,7 +1069,16 @@ input:-webkit-autofill:active {
     color: #555555;
     padding: 30px;
     box-shadow: 0 0 3px #eee;
-    height: 340px;
+    height: 400px;
+}
+.demoDesc {
+	position: relative;
+	font-size: 14px;
+	color: #111;
+	text-align: center;
+	border: 1px solid #fff;
+	background-color: #3498DB;
+	padding: 15px 0;
 }
 .input-group {
      position: relative;

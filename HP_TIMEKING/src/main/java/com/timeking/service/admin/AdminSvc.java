@@ -1,5 +1,6 @@
 package com.timeking.service.admin;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,5 +32,39 @@ public class AdminSvc {
 		 }
 		 
 		 return mCvtDat;
+	}
+
+	public Map<String, Object> deleteReq(int RS_SEQ) {
+		Map<String, Object> result = new HashMap<String, Object>();
+		 
+		try {
+			 int dbResult = adminMp.deleteReq(RS_SEQ);
+			 
+			 result.put("rstCd", "200");
+			 result.put("msg", "success");
+		} catch(Exception e) {
+			 result.put("rstCd", "500");
+			 result.put("msg", "delete req fail");
+			 e.printStackTrace();
+		}
+		 
+		 return result;
+	}
+
+	public Map<String, Object> updateReq(Map<String, Object> params) {
+		Map<String, Object> result = new HashMap<String, Object>();
+		
+		try {
+			 int dbResult = adminMp.updateReq(params);
+			 
+			 result.put("rstCd", "200");
+			 result.put("msg", "success");
+		} catch(Exception e) {
+			 result.put("rstCd", "500");
+			 result.put("msg", "updateReq req fail");
+			 e.printStackTrace();
+		}
+		
+		return result;
 	}
 }

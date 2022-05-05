@@ -452,12 +452,12 @@
                         </div>
                         <div class="area_ban">
                             <span class="intro_android_ban">
-                                <a href="https://play.google.com/store/apps/details?id=com.blueoceansoft.workforce" target="blank">
+                                <a href="" target="blank">
                                     <img src="${pageContext.request.contextPath}/img/btn_google.png" style="width: 100%; height: 100%;"/>
                                 </a>
                             </span>
                             <span class="intro_ios_ban">
-                                <a href="https://apps.apple.com/kr/app/id979829447" target="blank">
+                                <a href="" target="blank">
                                     <img src="${pageContext.request.contextPath}/img/btn_apple.png" style="width: 100%; height: 100%;"/>
                                 </a>
                             </span>

@@ -69,4 +69,31 @@
 			And ConCat_WS('^', x.R_CPN_NM, x.R_BIZ_NO) Like ConCat('%', #{CondText}, '%');
 		]]>		
     </select>
+    
+    <delete id="deleteReq" statementType="CALLABLE">
+		<![CDATA[
+			{call SPTK_DELETE_REQ (
+    			#{RS_SEQ}
+			)}
+		]]>
+    </delete>
+    
+    <update id="updateReq" parameterType="Map" statementType="CALLABLE">
+		<![CDATA[
+			{call SPTK_UPDATE_REQ (
+    			#{RS_SEQ},
+    			#{R_CPN_NM},
+    			#{R_BOSS_NM},
+    			#{R_BIZ_NO},
+    			#{R_CPN_NO},
+    			#{rAdrsZip},
+    			#{rAdrs},
+    			#{R_MOBILE},
+    			#{R_TEL},
+    			#{R_EMAIL},
+    			#{R_USER_CNT},
+    			#{rRmk}
+			)}
+		]]>
+    </update>
 </mapper>

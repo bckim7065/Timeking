@@ -369,6 +369,9 @@
         }
     </script>
     <style type="text/css">
+    	input {
+    		padding: 3px 7px;
+    	}
     </style>
 </head>
 <body>

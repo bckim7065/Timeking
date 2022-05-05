@@ -33,7 +33,7 @@
   	<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.9.1.js"></script>    	
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.validate.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/common.js?contextPath=${pageContext.request.contextPath}"></script>
-
+	
     <script type="text/javascript">
 	    $(document).ready(function() {	
 			validatorFormLogin = $("#formLogin").validate({
@@ -129,9 +129,13 @@
                 </div>		
                 <div id="divMsgLoginCheckResult">
                	</div>
-                <div class="mb15">						
+                <div class="mb15" style="height: 21px">						
                     <button class="btn_login pull-right">Login</button>    		
-                </div>	
+                </div>
+        		<div class="demoDesc mt25">
+        			데모계정 비밀번호로 로그인 가능합니다.<br>
+        			admin / admin
+               	</div>	
 			</form>
         </div> 
     </div>

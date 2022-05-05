@@ -1,9 +1,11 @@
 package com.timeking.controller.admin;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -40,6 +42,17 @@ public class AdminCtrl {
 				@RequestParam("draw") String asDraw
 			) throws Exception {
 		return adminSvc.getSvcReqList(asCondText, aiStart, aiLength, asDraw);
-	}	
-
+	}
+	
+	@RequestMapping("/admin/delete/{RS_SEQ}")
+	@ResponseBody
+	public Map<String, Object> deleteReq(@PathVariable int RS_SEQ) throws Exception {
+		return adminSvc.deleteReq(RS_SEQ);
+	}
+	
+	@RequestMapping("/admin/updateReq")
+	@ResponseBody
+	public Map<String, Object> updateReq(@RequestParam Map<String, Object> params) throws Exception {
+		return adminSvc.updateReq(params);
+	}
 }
